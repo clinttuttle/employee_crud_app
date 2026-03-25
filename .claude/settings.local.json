@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(cd backend:*)",
+      "Bash(npm run:*)",
+      "Bash(curl:*)",
+      "Bash(node check-db.js)",
+      "Bash(node setup-db.js)",
+      "Bash(tasklist:*)",
+      "Bash(powershell \"Get-WmiObject Win32_Process -Filter \\\\\"ProcessId = 55228\\\\\" | Select-Object CommandLine\")",
+      "Bash(taskkill:*)"
+    ]
+  }
+}

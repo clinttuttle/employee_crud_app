@@ -1,0 +1,12 @@
+
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.portkey.ai",
+    "ANTHROPIC_AUTH_TOKEN": "x3uA59YFdHglFXZJnHIrLJ7/Y0gd",
+    "ANTHROPIC_CUSTOM_HEADERS": "x-portkey-api-key: x3uA59YFdHglFXZJnHIrLJ7/Y0gd\nx-portkey-provider: @irom-tuttlejc-a-9b1c5e",
+    "ANTHROPIC_MODEL": "claude-sonnet-4-20250514"
+  },
+  "model": "claude-sonnet-4-20250514"
+}
+
+

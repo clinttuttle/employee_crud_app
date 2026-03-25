@@ -1,0 +1,19 @@
+   To see what's running on which ports:                                                                                                                                                                       
+    - netstat -ano (Windows) - shows all listening ports and process IDs
+    - lsof -i :3000 - shows what's using a specific port (replace 3000 with your port)
+    - ss -tulpn - modern alternative to netstat on Linux
+
+    To see running processes:
+    - ps aux | grep node - find Node.js processes (if your app uses Node)
+    - ps aux | grep python - for Python apps
+    - tasklist (Windows) - shows all running processes
+
+    To kill processes:
+    - kill <PID> - terminate by process ID
+    - kill -9 <PID> - force kill
+    - pkill -f "pattern" - kill by process name/pattern
+    - taskkill /PID <PID> /F (Windows)
+
+    Quick port-specific kill:
+    - lsof -ti:3000 | xargs kill - kill whatever's on port 3000
+    - fuser -k 3000/tcp - Linux alternative
