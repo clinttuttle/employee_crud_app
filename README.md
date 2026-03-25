@@ -193,15 +193,7 @@ CREATE TABLE employees (
 
 ### Environment Variables
 Backend requires these environment variables in `.env`:
-```
-DB_HOST=my-db.cr1b9933gaye.us-east-1.rds.amazonaws.com
-DB_USER=admin
-DB_PASS=Timndbpw10
-DB_PORT=3306
-DB_NAME=mydb
-PORT=5001
-NODE_ENV=development
-```
+
 
 ## 🚀 Deployment Considerations
 
