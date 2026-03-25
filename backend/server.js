@@ -11,9 +11,29 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// CORS configuration - allow frontend on localhost:5173
+// CORS configuration - dynamic origins based on environment
+const getAllowedOrigins = () => {
+  const frontendUrls = process.env.FRONTEND_URLS;
+  if (!frontendUrls) {
+    // Development fallback
+    return ['http://localhost:5173', 'http://127.0.0.1:5173'];
+  }
+  return frontendUrls.split(',').map(url => url.trim());
+};
+
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: (origin, callback) => {
+    const allowedOrigins = getAllowedOrigins();
+
+    // Allow requests with no origin (mobile apps, postman, etc.)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],

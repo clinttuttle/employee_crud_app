@@ -9,6 +9,8 @@ Built as a teaching demo for full-stack web development students.
 - **HTTP Client:** Axios
 - **Dev Server Port:** 5173 (Vite default)
 - **Backend API:** http://localhost:5001/api
+- **CORS** - Cross-origin resource sharing configured
+
 
 ## Project Structure
 ```
