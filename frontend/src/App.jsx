@@ -69,7 +69,7 @@ function App() {
       {/* Header */}
       <header className="app-header">
         <div className="header-content">
-          <h1 className="app-title">UT Austin Employee Management</h1>
+          <h1 className="app-title">Clint's Employee Appt</h1>
           <button
             onClick={toggleDarkMode}
             className="dark-mode-toggle"
