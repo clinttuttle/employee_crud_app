@@ -80,6 +80,7 @@ function EmployeeTable({ employees, onUpdateEmployee, onDeleteEmployee, loading,
               <div className="skeleton-cell"></div>
               <div className="skeleton-cell"></div>
               <div className="skeleton-cell"></div>
+              <div className="skeleton-cell"></div>
             </div>
           ))}
         </div>
@@ -129,13 +130,19 @@ function EmployeeTable({ employees, onUpdateEmployee, onDeleteEmployee, loading,
               >
                 Salary {renderSortIcon('salary')}
               </th>
+              <th
+                className="sortable"
+                onClick={() => handleSort('phone')}
+              >
+                Phone {renderSortIcon('phone')}
+              </th>
               <th className="actions-column">Actions</th>
             </tr>
           </thead>
           <tbody>
             {sortedEmployees.length === 0 ? (
               <tr>
-                <td colSpan="7" className="no-employees">
+                <td colSpan="8" className="no-employees">
                   {searchTerm ?
                     `No employees found matching "${searchTerm}".` :
                     'No employees found. Click "Add Employee" to get started.'

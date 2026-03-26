@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Save, User, Mail, Calendar, DollarSign } from 'lucide-react';
+import { X, Save, User, Mail, Calendar, DollarSign, Phone } from 'lucide-react';
 
 /**
  * Add Employee Drawer component with slide-out form
@@ -15,6 +15,7 @@ function AddEmployeeDrawer({ isOpen, onClose, onSubmit, isSubmitting = false }) 
     email: '',
     birthdate: '',
     salary: '',
+    phone: '',
   });
 
   const [validationErrors, setValidationErrors] = useState({});
@@ -33,6 +34,7 @@ function AddEmployeeDrawer({ isOpen, onClose, onSubmit, isSubmitting = false }) 
         email: '',
         birthdate: '',
         salary: '',
+        phone: '',
       });
       setValidationErrors({});
       setTouched({});
@@ -99,6 +101,12 @@ function AddEmployeeDrawer({ isOpen, onClose, onSubmit, isSubmitting = false }) 
       case 'salary':
         if (value && (isNaN(value) || parseFloat(value) < 0)) {
           return 'Salary must be a positive number';
+        }
+        return '';
+
+      case 'phone':
+        if (value && value.trim().length > 20) {
+          return 'Phone number must be less than 20 characters';
         }
         return '';
 
@@ -175,6 +183,7 @@ function AddEmployeeDrawer({ isOpen, onClose, onSubmit, isSubmitting = false }) 
         email: formData.email.trim().toLowerCase(),
         birthdate: formData.birthdate || null,
         salary: formData.salary ? parseFloat(formData.salary) : null,
+        phone: formData.phone ? formData.phone.trim() : null,
       };
 
       await onSubmit(submitData);
@@ -314,6 +323,29 @@ function AddEmployeeDrawer({ isOpen, onClose, onSubmit, isSubmitting = false }) 
                 <span className="form-error">{validationErrors.salary}</span>
               )}
               <span className="form-help">Optional: Annual salary in USD</span>
+            </div>
+
+            {/* Phone */}
+            <div className="form-group">
+              <label htmlFor="phone" className="form-label">
+                <Phone size={16} />
+                Phone Number
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={(e) => handleInputChange('phone', e.target.value)}
+                onBlur={() => handleInputBlur('phone')}
+                className={`form-input ${validationErrors.phone && touched.phone ? 'error' : ''}`}
+                placeholder="(555) 123-4567"
+                disabled={isSubmitting}
+                maxLength={20}
+              />
+              {validationErrors.phone && touched.phone && (
+                <span className="form-error">{validationErrors.phone}</span>
+              )}
+              <span className="form-help">Optional: Employee's phone number</span>
             </div>
 
             {/* Form Actions */}
