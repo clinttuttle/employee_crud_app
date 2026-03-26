@@ -71,6 +71,16 @@ const Employee = sequelize.define('Employee', {
       },
     },
   },
+  phone: {
+    type: DataTypes.STRING(12),
+    allowNull: true,
+    validate: {
+      len: {
+        args: [0, 12],
+        msg: 'Phone must be 12 characters or fewer',
+      },
+    },
+  },
 }, {
   tableName: 'employees',
   timestamps: false, // Assuming no created_at/updated_at columns

@@ -35,6 +35,8 @@ server.js           # Express app entry point
 | email       | varchar(255)   | Required, unique   |
 | birthdate   | date           | Optional           |
 | salary      | decimal(12,2)  | Optional           |
+| phone       | varchar(12)    | Optional           |
+
 
 ## Database
 - MySQL on AWS RDS

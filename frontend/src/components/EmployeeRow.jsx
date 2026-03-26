@@ -15,6 +15,7 @@ function EmployeeRow({ employee, onUpdate, onDelete }) {
     email: '',
     birthdate: '',
     salary: '',
+    phone: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
@@ -31,6 +32,7 @@ function EmployeeRow({ employee, onUpdate, onDelete }) {
         email: employee.email || '',
         birthdate: employee.birthdate || '',
         salary: employee.salary || '',
+        phone: employee.phone || '',
       });
     }
   }, [employee, isEditing]);
@@ -101,6 +103,7 @@ function EmployeeRow({ employee, onUpdate, onDelete }) {
       email: employee.email || '',
       birthdate: employee.birthdate || '',
       salary: employee.salary || '',
+      phone: employee.phone || '',
     });
   };
 
@@ -221,6 +224,17 @@ function EmployeeRow({ employee, onUpdate, onDelete }) {
           )}
         </td>
         <td>
+          <input
+            type="tel"
+            value={editData.phone}
+            onChange={(e) => handleInputChange('phone', e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="edit-input"
+            placeholder="555-123-4567"
+            maxLength={12}
+          />
+        </td>
+        <td>
           <div className="edit-actions">
             <button
               onClick={handleSaveEdit}
@@ -254,6 +268,7 @@ function EmployeeRow({ employee, onUpdate, onDelete }) {
       <td>{employee.email}</td>
       <td>{formatDate(employee.birthdate)}</td>
       <td>{formatSalary(employee.salary)}</td>
+      <td>{employee.phone || '-'}</td>
       <td>
         <div className="row-actions">
           <button

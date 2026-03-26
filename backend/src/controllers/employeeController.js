@@ -62,7 +62,7 @@ export const getEmployeeById = async (req, res) => {
 // Create new employee
 export const createEmployee = async (req, res) => {
   try {
-    const { first_name, last_name, email, birthdate, salary } = req.body;
+    const { first_name, last_name, email, birthdate, salary, phone } = req.body;
 
     // Validate required fields
     if (!first_name || !last_name || !email) {
@@ -86,6 +86,10 @@ export const createEmployee = async (req, res) => {
 
     if (salary !== undefined && salary !== null && salary !== '') {
       employeeData.salary = parseFloat(salary);
+    }
+
+    if (phone !== undefined && phone !== null && phone !== '') {
+      employeeData.phone = phone.trim();
     }
 
     const newEmployee = await Employee.create(employeeData);
@@ -128,7 +132,7 @@ export const createEmployee = async (req, res) => {
 export const updateEmployee = async (req, res) => {
   try {
     const { id } = req.params;
-    const { first_name, last_name, email, birthdate, salary } = req.body;
+    const { first_name, last_name, email, birthdate, salary, phone } = req.body;
 
     // Validate ID is a number
     if (!id || isNaN(id)) {
@@ -162,6 +166,7 @@ export const updateEmployee = async (req, res) => {
       email: email.trim().toLowerCase(),
       birthdate: birthdate || null,
       salary: (salary !== undefined && salary !== null && salary !== '') ? parseFloat(salary) : null,
+      phone: (phone !== undefined && phone !== null && phone !== '') ? phone.trim() : null,
     };
 
     const updatedEmployee = await employee.update(updateData);

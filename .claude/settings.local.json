@@ -10,7 +10,8 @@
       "Bash(tasklist:*)",
       "Bash(powershell \"Get-WmiObject Win32_Process -Filter \\\\\"ProcessId = 55228\\\\\" | Select-Object CommandLine\")",
       "Bash(taskkill:*)",
-      "Bash(find '/c/localdev/SP26 - Claude v2' -type f \\\\\\(-name *.env* -o -name .vercelignore -o -name .netlify* -o -name *.config.* \\\\\\))"
+      "Bash(find '/c/localdev/SP26 - Claude v2' -type f \\\\\\(-name *.env* -o -name .vercelignore -o -name .netlify* -o -name *.config.* \\\\\\))",
+      "Bash(node -e \":*)"
     ]
   }
 }

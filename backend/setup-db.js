@@ -40,6 +40,7 @@ async function setupDatabase() {
         email: 'john.doe@company.com',
         birthdate: '1990-05-15',
         salary: 75000.00,
+        phone: '(555) 123-4567',
       },
       {
         first_name: 'Jane',
@@ -47,6 +48,7 @@ async function setupDatabase() {
         email: 'jane.smith@company.com',
         birthdate: '1985-08-22',
         salary: 85000.00,
+        phone: '(555) 987-6543',
       },
       {
         first_name: 'Bob',
@@ -54,6 +56,7 @@ async function setupDatabase() {
         email: 'bob.johnson@company.com',
         birthdate: '1992-12-03',
         salary: 65000.00,
+        phone: '(555) 456-7890',
       },
       {
         first_name: 'Alice',
@@ -61,6 +64,7 @@ async function setupDatabase() {
         email: 'alice.williams@company.com',
         birthdate: null, // Testing optional field
         salary: null,    // Testing optional field
+        phone: null,     // Testing optional field
       },
     ];
 

@@ -31,6 +31,7 @@ src/
 | email       | varchar(255)   | Required, unique   |
 | birthdate   | date           | Optional           |
 | salary      | decimal(12,2)  | Optional           |
+| phone       | varchar(12)    | Optional           |
 
 ## API Conventions
 - All API calls go through service files in `/src/services/` — never call Axios directly from a component
