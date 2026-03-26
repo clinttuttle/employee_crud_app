@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDarkMode } from './hooks/useDarkMode.js';
 import { useEmployees } from './hooks/useEmployees.js';
 import { useSearch } from './hooks/useSearch.js';
-import { Sun, Moon, Plus } from 'lucide-react';
+import { Citrus, Lightbulb, Plus } from 'lucide-react';
 import EmployeeTable from './components/EmployeeTable.jsx';
 import SearchBar from './components/SearchBar.jsx';
 import AddEmployeeDrawer from './components/AddEmployeeDrawer.jsx';
@@ -75,7 +75,7 @@ function App() {
             className="dark-mode-toggle"
             aria-label="Toggle theme"
           >
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            {isDarkMode ? <Lightbulb size={20} /> : <Citrus size={20} />}
           </button>
         </div>
       </header>
