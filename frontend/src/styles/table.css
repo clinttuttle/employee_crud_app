@@ -31,8 +31,8 @@
 
 /* Actions column */
 .actions-column {
-  width: 180px;
-  min-width: 180px;
+  width: 220px;
+  min-width: 220px;
 }
 
 /* Employee rows */
@@ -54,7 +54,7 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .edit-actions {

@@ -51,25 +51,25 @@
   --theme-transition: all 0.3s ease;
 }
 
-/* UT Austin Dark theme colors */
+/* UT Austin Burnt Orange theme colors */
 :root.dark {
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2a2a2a;
-  --bg-tertiary: #3a3a3a;
-  --text-primary: #f2e3c6;
-  --text-secondary: #d4c1a0;
-  --text-muted: #8a8a8a;
+  --bg-primary: #7a3200;
+  --bg-secondary: #8f3c00;
+  --bg-tertiary: #a84900;
+  --text-primary: #ffffff;
+  --text-secondary: #ffe8cc;
+  --text-muted: #ffbf80;
 
-  --border-color: #4a4a4a;
-  --border-hover: #6a6a6a;
+  --border-color: #c46820;
+  --border-hover: #e08040;
 
-  --button-primary-bg: #bf5700;
-  --button-primary-hover: #dc6500;
-  --button-primary-text: #ffffff;
+  --button-primary-bg: #ffffff;
+  --button-primary-hover: #f5e6d3;
+  --button-primary-text: #7a3200;
 
   --button-secondary-bg: #002e5d;
   --button-secondary-hover: #00417a;
-  --button-secondary-text: #f2e3c6;
+  --button-secondary-text: #ffffff;
 
   --button-success-bg: #198754;
   --button-success-hover: #20a85a;
@@ -79,9 +79,9 @@
   --button-danger-hover: #e85663;
   --button-danger-text: #ffffff;
 
-  --input-bg: #2a2a2a;
-  --input-border: #4a4a4a;
-  --input-focus: #bf5700;
+  --input-bg: #6b2800;
+  --input-border: #c46820;
+  --input-focus: #ffffff;
 
   --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
   --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);

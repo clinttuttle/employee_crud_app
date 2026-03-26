@@ -11,6 +11,20 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
+const normalizeOrigin = (originValue) => {
+  if (!originValue) return '';
+
+  const trimmedOrigin = originValue.trim().replace(/\/+$/, '');
+
+  try {
+    return new URL(trimmedOrigin).origin;
+  } catch {
+    return trimmedOrigin;
+  }
+};
+
+const escapeRegexChars = (textValue) => textValue.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 // CORS configuration - dynamic origins based on environment
 const getAllowedOrigins = () => {
   const frontendUrls = process.env.FRONTEND_URLS;
@@ -18,7 +32,23 @@ const getAllowedOrigins = () => {
     // Development fallback
     return ['http://localhost:5173', 'http://127.0.0.1:5173'];
   }
-  return frontendUrls.split(',').map(url => url.trim());
+  return frontendUrls
+    .split(',')
+    .map((url) => normalizeOrigin(url))
+    .filter(Boolean);
+};
+
+const isOriginAllowed = (origin, allowedOrigins) => {
+  const normalizedOrigin = normalizeOrigin(origin);
+
+  return allowedOrigins.some((allowedOrigin) => {
+    if (allowedOrigin.includes('*')) {
+      const wildcardRegex = new RegExp(`^${escapeRegexChars(allowedOrigin).replace(/\\\*/g, '.*')}$`);
+      return wildcardRegex.test(normalizedOrigin);
+    }
+
+    return allowedOrigin === normalizedOrigin;
+  });
 };
 
 const corsOptions = {
@@ -28,9 +58,10 @@ const corsOptions = {
     // Allow requests with no origin (mobile apps, postman, etc.)
     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
+    if (isOriginAllowed(origin, allowedOrigins)) {
       callback(null, true);
     } else {
+      console.warn(`CORS blocked request from origin: ${origin}`);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -41,6 +72,7 @@ const corsOptions = {
 
 // Middleware
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
@@ -121,12 +153,15 @@ const startServer = async () => {
 
     // Start server
     app.listen(PORT, () => {
+      const allowedOrigins = getAllowedOrigins();
+
       console.log('🚀 Employee CRUD API Server Started');
       console.log(`📍 Server running on port ${PORT}`);
       console.log(`🌐 Server URL: http://localhost:${PORT}`);
       console.log(`🏥 Health check: http://localhost:${PORT}/health`);
       console.log(`📚 API endpoints: http://localhost:${PORT}/api/employees`);
       console.log(`🔍 Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`🔐 CORS allowed origins: ${allowedOrigins.join(', ') || '(none configured)'}`);
       console.log('');
     });
   } catch (error) {

@@ -73,7 +73,7 @@ function App() {
           <button
             onClick={toggleDarkMode}
             className="dark-mode-toggle"
-            aria-label="Toggle dark mode"
+            aria-label="Toggle theme"
           >
             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
